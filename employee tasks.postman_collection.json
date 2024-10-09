@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "c8b6dbd5-4911-4fbf-a87a-3cae597c92e7",
+		"name": "employee tasks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26438502"
+	},
+	"item": [
+		{
+			"name": "employees",
+			"item": [
+				{
+					"name": "fetch employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV}}/employees",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch employees with tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV}}/employees/with-tasks",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"employees",
+								"with-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "new employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Mahmoud Bebars\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEV}}/employees",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch employee with tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV}}/employees/:id",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6705da0dd377083d2fc39792"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update employee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Mahmoud Abd Allah\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEV}}/employees/:id",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6705d2148892bae51307b9b2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Mahmoud Abd Allah\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEV}}/employees/:id",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6705d3608892bae51307b9b3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "fetch all tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV}}/tasks",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch employee tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV}}/tasks/employee/:id",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"tasks",
+								"employee",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6705da0dd377083d2fc39792"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch task by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV}}/tasks/:id",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6705d2148892bae51307b9b2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Finish Employee Tasks Frontend\",\n    \"employeeId\": \"6705da0dd377083d2fc39792\",\n    \"from\": \"2024-10-09T04:00:00Z\",\n    \"to\": \"2024-10-09T07:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEV}}/tasks",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Finish Employee Tasks Frontend\",\n    \"employeeId\": \"6705d2148892bae51307b9b3\",\n    \"from\": \"2024-10-09T04:00:00Z\",\n    \"to\": \"2024-10-09T10:30:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEV}}/tasks/:id",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6705d5729f756e7bff55075f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{DEV}}/tasks/:id",
+							"host": [
+								"{{DEV}}"
+							],
+							"path": [
+								"tasks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6705d5729f756e7bff55075f"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
