@@ -4,7 +4,7 @@
   "description": "this application is a simple API to mansge employees tasks ",
   "main": "server.ts",
   "scripts": {
-    "start": "nodemon ./src/server.ts",
+    "start": "nodemon ./src/server.js",
     "dev": "nodemon ./src/server.ts",
     "build": "tsc --project tsconfig.json",
     "postinstall": "prisma generate"
