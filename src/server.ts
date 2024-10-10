@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 
 // Setup routes
 routes.forEach((route: { prefix: string; router: express.Router }) =>
-  app.use(`/api/v1/${route.prefix}`, route.router),
+  app.use(`/v1/${route.prefix}`, route.router),
 );
 
 const PORT = config.port;
