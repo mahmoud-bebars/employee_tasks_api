@@ -46,7 +46,7 @@ export const getTaskById = async (id: string) => {
 
 // get Employee Tasks
 export const getEmployeeTasks = async (employeeId: string) => {
-  const tasks = await prisma.task.findMany({
+  return await prisma.task.findMany({
     where: {
       employeeId: employeeId,
     },
@@ -58,8 +58,6 @@ export const getEmployeeTasks = async (employeeId: string) => {
       to: true,
     },
   });
-  console.log(tasks);
-  return tasks;
 };
 
 // create task

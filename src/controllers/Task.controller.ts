@@ -44,9 +44,12 @@ export const fetchTask = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const task = await getTaskById(id);
+    if (!task) {
+      throw new Error("Task not found");
+    }
     return res.status(200).json({
       code: 200,
-      message: task ? "Task fetched successfully" : "Task not found",
+      message: "Task fetched successfully",
       data: task,
     });
   } catch (error) {
@@ -57,12 +60,14 @@ export const fetchTask = async (req: Request, res: Response) => {
 export const newTask = async (req: Request, res: Response) => {
   try {
     const { description, from, to, employeeId } = req.body;
+
     if (!description || !from || !to || !employeeId) {
-      return res.status(400).json({
-        code: 400,
-        message: "All fields are required",
-      });
+      throw new Error("All fields are required");
     }
+    if (from > to) {
+      throw new Error("From date must be less than to date");
+    }
+
     // check if employee exists
     const existsEmployee = await checkEmployeeExists(employeeId);
     if (!existsEmployee) {
@@ -70,9 +75,12 @@ export const newTask = async (req: Request, res: Response) => {
     }
 
     const task = await createTask(description, from, to, employeeId);
+    if (!task) {
+      throw new Error("Faild to create task");
+    }
     return res.status(200).json({
       code: 200,
-      message: task ? "Task created successfully" : "Task not created",
+      message: "Task created successfully",
       data: task,
     });
   } catch (error) {
@@ -85,9 +93,12 @@ export const editTask = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { description, from, to, employeeId } = req.body;
     const task = await updateTask(id, description, from, to, employeeId);
+    if (!task) {
+      throw new Error("Faild to update task");
+    }
     return res.status(200).json({
       code: 200,
-      message: task ? "Task updated successfully" : "Task not updated",
+      message: "Task updated successfully",
       data: task,
     });
   } catch (error) {
@@ -99,9 +110,12 @@ export const removeTask = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const task = await deleteTask(id);
+    if (!task) {
+      throw new Error("Faild to delete task");
+    }
     return res.status(200).json({
       code: 200,
-      message: task ? "Task deleted successfully" : "Task not deleted",
+      message: "Task deleted successfully",
       data: task,
     });
   } catch (error) {

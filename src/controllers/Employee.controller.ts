@@ -42,11 +42,12 @@ export const fetchEmployeeWithTasks = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const employee = await getEmployeeById(id);
+    if (!employee) {
+      throw new Error("Employee not found");
+    }
     return res.status(200).json({
       code: 200,
-      message: employee
-        ? "Employee fetched successfully"
-        : "Employee not found",
+      message: "Employee fetched successfully",
       data: employee,
     });
   } catch (error) {
@@ -63,11 +64,12 @@ export const newEmployee = async (req: Request, res: Response) => {
 
     const employee = await createEmployee(name);
 
+    if (!employee) {
+      throw new Error("Faild to create employee");
+    }
     return res.status(200).json({
       code: 200,
-      message: employee
-        ? "Employee created successfully"
-        : "Employee not created",
+      message: "Employee created successfully",
       data: employee,
     });
   } catch (error) {
@@ -80,11 +82,14 @@ export const editEmployee = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { name } = req.body;
     const employee = await updateEmployee(id, name);
+
+    if (!employee) {
+      throw new Error("Faild to update employee");
+    }
+
     return res.status(200).json({
       code: 200,
-      message: employee
-        ? "Employee updated successfully"
-        : "Employee not updated",
+      message: "Employee updated successfully",
       data: employee,
     });
   } catch (error) {
@@ -96,11 +101,12 @@ export const removeEmployee = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const employee = await deleteEmployee(id);
+    if (!employee) {
+      throw new Error("Faild to delete employee");
+    }
     return res.status(200).json({
       code: 200,
-      message: employee
-        ? "Employee deleted successfully"
-        : "Employee not deleted",
+      message: "Employee deleted successfully",
       data: employee,
     });
   } catch (error) {
